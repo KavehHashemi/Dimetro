@@ -1,13 +1,87 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button {
+  border: none;
+  outline: none;
+  background-color: #ffffff00;
+}
+
+button:hover {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+#main {
+  height: 100vh;
+  background-color: rgb(253, 253, 253);
+}
+
+#searchelement {
+  padding: 0.6rem;
+  background-color: #5f9ea0;
+  display: flex;
+}
+#searchfield {
+  margin: auto;
+  height: 2rem;
+  width: 25rem;
+  border-radius: 2px;
+  border: none;
+}
+#searchfield:focus {
+  border: none;
+  outline: none;
+}
+
+#notescontainer {
+  padding: 2rem 8rem;
+}
+
+#notelist {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1.2rem;
+  background-color: white;
+  box-shadow: 0 0 20px -5px #c5c5c5;
+}
+
+#notecard {
+  padding: 1rem;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+  background-color: aliceblue;
+  box-shadow: 0 0 20px -4px #fff;
+}
+
+#textarea {
+  width: 100%;
+  height: 1.2rem;
+  border: none;
+  outline: none;
+}
+
+#textarea:focus {
+  border: none;
+  outline: none;
+}
+
+#actions > p {
+  font-size: smaller;
+}
+
+#save {
+  color: cadetblue;
+}
+
+#delete {
+  color: crimson;
 }

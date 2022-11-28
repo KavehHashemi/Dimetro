@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
+import { v4 as uuid } from "uuid";
+import SearchComponent from "./Components/SearchComponent";
+import NotesContainer from "./Components/NotesContainer";
+import { useSelector, useDispatch } from "react-redux";
+import { load, remove, save } from "./redux/notes";
 
 function App() {
+  const { searchResults } = useSelector((state) => state.notes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(load());
+  }, []);
+
+  const addNote = (text) => {
+    const id = uuid();
+    let now = new Date();
+    const date = `${now.toDateString()} - ${now.getHours()}:${now.getMinutes()}`;
+    const newNote = { id, text, date };
+    dispatch(save(newNote));
+  };
+
+  const deleteNote = (id) => {
+    dispatch(remove(id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="main">
+      <SearchComponent></SearchComponent>
+      <NotesContainer
+        notes={searchResults}
+        onAdd={addNote}
+        onDelete={deleteNote}
+      ></NotesContainer>
     </div>
   );
 }
